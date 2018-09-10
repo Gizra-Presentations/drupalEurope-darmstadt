@@ -1,6 +1,6 @@
 module Main exposing (main)
 
--- https://ellie-app.com/3j3nWcn3BrSa1
+-- https://ellie-app.com/3j3zsLYPdMza1
 
 import Browser
 import Html exposing (Html, button, div, img, p, text)
@@ -83,11 +83,26 @@ viewParagraphs paragraphs =
         (List.map (\paragraph -> p [] [ text paragraph ]) paragraphs)
 
 
+viewParagraphsCount : List String -> Html Msg
+viewParagraphsCount paragraphs =
+    -- div [] [ text <| String.fromInt <| List.length paragraphs ]
+    let
+        count =
+            List.foldl (\_ accum -> accum + 1) 0 paragraphs
+    in
+    div []
+        [ text "Paragraphs Count: "
+        , text <| String.fromInt count
+        ]
+
+
 view : Model -> Html Msg
 view model =
     div []
         [ div [] [ text model.title ]
         , viewImageAndCaption model.imageAndCaption
+        , viewParagraphs model.paragraphs
+        , viewParagraphsCount model.paragraphs
         ]
 
 
