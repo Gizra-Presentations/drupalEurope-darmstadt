@@ -54,7 +54,7 @@
 
           <!-- Elm app -->
           <section>
-            <img src="https://user-images.githubusercontent.com/125707/43045582-d17660e4-8dc3-11e8-99a2-7855ed9d1ce1.jpg" class="stretch">
+            <img src="https://user-images.githubusercontent.com/125707/45286952-c760e680-b4ef-11e8-837b-04f537272ce8.jpg" class="stretch">
           </section>
 
         <section>
@@ -63,19 +63,21 @@
           </h1>
 
           <aside class="notes" data-markdown>
-            * כדי להבין מה אני מוכר לכם פה, בוא נבין קודם מהו המוצר
-            * שפה בפני עצמה, מתקמפלת לסקריפט וללא רנטיימ ארור
+            * To understand what I'm selling you folks here, first lest understand
+            what is the product.
+            * Elm is a language compiles Js without run time error.
           </aside>
         </section>
 
         <section>
-          <small><a href="https://ellie-app.com/QMTqsgYYPza1" target="_blank">https://ellie-app.com/QMTqsgYYPza1</a> </small>
+          <small><a href="https://ellie-app.com/3hY56wDzX5Sa1" target="_blank">https://ellie-app.com/QMTqsgYYPza1</a> </small>
 
 					<pre>
 						<code class="elm" data-trim>
 module Main exposing (main)
 
-import Html exposing (Html, button, div, pre, program, text)
+import Browser
+import Html exposing (Html, button, div, text, button, pre)
 import Html.Attributes exposing (class)
 import Html.Events exposing (onClick)
 
@@ -83,7 +85,6 @@ import Html.Events exposing (onClick)
 type alias Model =
     { name : String
     , kids : Int
-    , age : Int
     , counter : Int
     }
 
@@ -92,58 +93,46 @@ initialModel : Model
 initialModel =
     { name = "Amitai"
     , kids = 3
-    , age = 40
     , counter = 0
     }
 
 
-init : ( Model, Cmd Msg )
-init =
-    ( initialModel
-    , Cmd.none
-    )
-
-
 type Msg
-    = DecrementCounter
-    | IncrementCounter
+    = IncrementCounter
+    | DecrementCounter
 
 
-update : Msg -> Model -> ( Model, Cmd Msg )
+update : Msg -> Model -> Model
 update msg model =
     case msg of
-        DecrementCounter ->
-            ( { model | counter = model.counter - 1 }
-            , Cmd.none
-            )
-
         IncrementCounter ->
-            ( { model | counter = model.counter + 1 }
-            , Cmd.none
-            )
+            { model | counter = model.counter + 1 }
+
+        DecrementCounter ->
+            { model | counter = model.counter - 1 }
 
 
 view : Model -> Html Msg
 view model =
-    div [ class "container" ]
+      div [ class "container" ]
         [ div [ class "row" ]
             [ div [] [ text <| "Name: " ++ model.name ]
-            , div [] [ text <| "Age: " ++ toString model.age ]
-            , div [] [ text <| "Kids num: " ++ toString model.kids ]
+            , div [] [ text <| "Kids num: " ++ String.fromInt model.kids ]
             , button [ onClick DecrementCounter ] [ text "-" ]
             , button [ onClick IncrementCounter ] [ text "+" ]
-            , pre [] [ text <| toString model.counter ]
+            , pre [] [ text <| String.fromInt model.counter ]
             ]
         ]
 
 
-main : Program Never Model Msg
+
+
+main : Program () Model Msg
 main =
-    program
-        { init = init
+    Browser.sandbox
+        { init = initialModel
         , view = view
         , update = update
-        , subscriptions = \_ -> Sub.none
         }
 
 						</code>
@@ -152,7 +141,7 @@ main =
           <aside class="notes" data-markdown>
             * Elm arch - very opininated
             * model -> update -> view
-            * מוכר את זה באמצעות הצגה של המוצר המתחרה
+            * Lets sell this by showing the competing product
           </aside>
 				</section>
 
@@ -161,8 +150,7 @@ main =
           <img src="https://user-images.githubusercontent.com/125707/43045161-f21bbd6a-8dbb-11e8-9b8a-10a60e60e567.jpg" class="stretch">
 
           <aside class="notes" data-markdown>
-            * I cannot be bothered
-            * בתור בנאדם לא אמור לבוא במגע ישיר איתה
+            * I cannot be bothered. I don't want to interact with JS directly.
             * React still needs me to be dispiclined, local storage
             * Http will fail
             * Complete rewrites, it just works.
@@ -175,11 +163,12 @@ main =
           </h1>
 
           <aside class="notes" data-markdown>
-            * מה התמריץ שלי למכור לך אתם אלמ
-            * מה אני ארוויח
-            * כלום
-            * קל להשיג מפתחים, באופן אירוני בגלל חוסר הפופלריות
-            * מבלי יומרנות, אציג לכם את הסיפור שלי. את הסיפור של גיזרה
+            * So what is my incentive to sell you.
+            * What am I'm gaining from this? Nothing.
+            * There's no business in this Drupal events.
+            * Easy to get devs, because it's not that popular.
+            * So without trying to tell you what to do, I'll tell you my
+            story, the Gizra story.
           </aside>
         </section>
 
@@ -204,7 +193,7 @@ main =
                 <aside class="notes" data-markdown>
                   * So, let me try and gain some trust by telling you who I am.
                   * CTO, co-owner of Gizra
-                  * Web development shop with headquraters in TLV with over 25 people,
+                  * Web development shop with headquraters in TLV with about 25 people,
                   many around the globe: Canada, Us, Spain, Hungary, England, and so on.
                   * Fancy clients.
                   * Almost 4 years ago we started with Elm.
@@ -241,7 +230,8 @@ main =
             <section>
               <img src="https://cloud.githubusercontent.com/assets/125707/9739824/2fcc8cd0-565a-11e5-8024-0d01200773cd.jpg" />
               <aside class="notes" data-markdown>
-                * מאוד מדוייק
+                * it's super clear and answers
+                the definiiton, but not much business value here.
               </aside>
             </section>
 
@@ -257,7 +247,7 @@ main =
             <section>
               <img src="https://user-images.githubusercontent.com/125707/40116976-234d128a-591e-11e8-894a-2cbff64c38d3.jpg" alt="">
               <aside class="notes" data-markdown>
-                * I can add an image of a classroom chalkboard, to emphasize the irony and tension between tradiional classrooms and the edtech.
+                * I can add an image of a classroom chalkboard, to emphasize the irony and tension between tradional classrooms and the edtech.
               </aside>
             </section>
 
@@ -459,6 +449,167 @@ main =
 
             <section>
               <h2>Is It Right for You?</h2>
+            </section>
+
+            <section>
+              <pre>
+                <code class="elm" data-trim>
+type alias Model =
+    { title : String
+    , paragraphs : List String
+    , imageId : Int
+    , caption : String
+    }
+
+
+initialModel : Model
+initialModel =
+    { title = "Best Title Ever"
+    , paragraphs =
+        [ "First paragraph is about Elm "
+        , "Second it still about Elm"
+        ]
+    -- No image.
+    , imageId = 0
+    , caption = ""
+    }
+
+              </pre>
+            </code>
+            </section>
+
+            <section>
+              <pre>
+                <code class="elm" data-trim>
+type alias Model =
+    { image : Int
+    , caption : String
+    }
+
+
+initialModel : Model
+initialModel =
+    { image = 0
+    , caption = ""
+    }
+
+              </pre>
+            </code>
+            </section>
+
+            <section>
+              <pre>
+                <code class="elm" data-trim>
+type alias Model =
+    { image : Maybe Int
+    , caption : String
+    }
+
+
+initialModel : Model
+initialModel =
+    { image = Nothing
+    , caption = Nothing
+    }
+
+              </pre>
+            </code>
+            </section>
+
+            <section>
+              <pre>
+                <code class="elm" data-trim>
+type alias Model =
+    { image : Maybe Int
+    , caption : String
+    }
+
+
+initialModel : Model
+initialModel =
+    { image = Just 100
+    , caption = ""
+    }
+
+              </pre>
+            </code>
+            </section>
+
+            <section>
+              <pre>
+                <code class="elm" data-trim>
+type Maybe a
+    = Just a
+    | Nothing
+
+              </pre>
+            </code>
+            </section>
+
+            <section>
+              <h2>Making Impossible States Impossible</h2>
+              <pre>
+                <code class="elm" data-trim>
+type alias Model =
+    { image : Maybe Int
+    , caption : String
+    }
+
+
+initialModel : Model
+initialModel =
+    { image = Nothing
+    , caption = "Caption, but no image!"
+    }
+
+              </pre>
+            </code>
+            </section>
+
+
+            <section>
+              <pre>
+                <code class="elm" data-trim>
+type alias ImageAttributes =
+    { imageId : Int
+    , caption : String
+    }
+
+type ImageAndCaption
+    = NoImage
+    | Image ImageAttributes
+
+
+type alias Model =
+    { title : String
+    , paragraphs : List String
+    , imageAndCaption : ImageAndCaption
+    }
+              </pre>
+            </code>
+            </section>
+
+            <section>
+              <pre>
+                <code class="elm" data-trim>
+type alias Model =
+    { title : String
+    , paragraphs : List String
+    , imageAndCaption : ImageAndCaption
+    }
+
+
+initialModel : Model
+initialModel =
+    { title = "Best Title Ever"
+    , paragraphs =
+        [ "First paragraph is about Elm "
+        , "Second it still about Elm"
+        ]
+    , imageAndCaption = NoImage
+    }
+              </pre>
+            </code>
             </section>
 
 
