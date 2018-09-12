@@ -54,7 +54,7 @@
 
           <!-- Elm app -->
           <section>
-            <img src="https://user-images.githubusercontent.com/125707/45286952-c760e680-b4ef-11e8-837b-04f537272ce8.jpg" class="stretch">
+            <img src="https://user-images.githubusercontent.com/125707/45414847-8813d080-b67c-11e8-9dab-a862641fe59a.jpg" class="stretch">
           </section>
 
         <section>
@@ -196,7 +196,10 @@ main =
                   * Web development shop with headquraters in TLV with about 25 people,
                   many around the globe: Canada, Us, Spain, Hungary, England, and so on.
                   * Fancy clients.
-                  * Almost 4 years ago we started with Elm.
+                  * Almost 4 years ago we started with Elm. That's the strongest
+                  selling point
+                  * And as much as excited about technology, I care more about the
+                  business side.
                 </aside>
             </section>
 
@@ -208,7 +211,8 @@ main =
                 <li>People Are Happy</li>
               </ul>
               <aside class="notes">
-                * The typical project
+                * If you ever heard me giving a presentation, you've heard
+                most IT project will fail.
               </aside>
             </section>
 
@@ -218,9 +222,10 @@ main =
                 Value-driven development is simple; but actualizing it is tough.
 
                 <aside class="notes" data-markdown>
-                  * What are the Goals?
+                  * So before we talk about technology, we should understand really
+                    what are the Goals?
                   * How to define success, and measure it?
-                  * On tech projects, people loss it.
+                  * On tech projects, people loss it for some reason.
                 </aside>
               </div>
 
@@ -247,7 +252,6 @@ main =
             <section>
               <img src="https://user-images.githubusercontent.com/125707/40116976-234d128a-591e-11e8-894a-2cbff64c38d3.jpg" alt="">
               <aside class="notes" data-markdown>
-                * I can add an image of a classroom chalkboard, to emphasize the irony and tension between tradional classrooms and the edtech.
               </aside>
             </section>
 
@@ -311,6 +315,7 @@ main =
                   * Client disapointed. Mechanic example
                   * As developers we expect the client be ok over and over with the fact that breaks are not working.
                   * Devs/ Account manager moral
+                  * Bugs cause among other stuff also lack of confidence
               </aside>
             </section>
 
@@ -414,6 +419,7 @@ main =
             <section>
               <h2>Why is Elm good for your business?</h2>
               <aside class="notes" data-markdown>
+                * I don't know your business
                 * The compiler reduces your cognitive load, so you are not afarid of constatnly adding new stuff
                 or polishing old ones
                 * It has a community of developers. Sure, much less than React, but it seems the ratio of experience, seniority
@@ -476,6 +482,11 @@ initialModel =
 
               </pre>
             </code>
+
+            <aside class="notes" data-markdown>
+              * Imagine an article, with title paragraphs and image. Image ID -
+              a file ID
+            </aside>
             </section>
 
             <section>
@@ -495,6 +506,11 @@ initialModel =
 
               </pre>
             </code>
+            <aside class="notes" data-markdown>
+              * Lets zoom in
+              * Empty string is ok, but 0 is not.
+            </aside>
+
             </section>
 
             <section>
@@ -502,7 +518,7 @@ initialModel =
                 <code class="elm" data-trim>
 type alias Model =
     { image : Maybe Int
-    , caption : String
+    , caption : Maybe String
     }
 
 
@@ -521,14 +537,14 @@ initialModel =
                 <code class="elm" data-trim>
 type alias Model =
     { image : Maybe Int
-    , caption : String
+    , caption : Maybe String
     }
 
 
 initialModel : Model
 initialModel =
     { image = Just 100
-    , caption = ""
+    , caption = Just "Some caption"
     }
 
               </pre>
@@ -538,13 +554,32 @@ initialModel =
             <section>
               <pre>
                 <code class="elm" data-trim>
+type Bool
+    = False
+    | True
+
+              </pre>
+            </code>
+            <aside class="notes" data-markdown>
+              * Types intro
+            </aside>
+            </section>
+
+            <section>
+              <pre>
+                <code class="elm" data-trim>
+
 type Maybe a
     = Just a
     | Nothing
 
               </pre>
             </code>
+            <aside class="notes" data-markdown>
+              * You now know almost everything about types
+            </aside>
             </section>
+
 
             <section>
               <h2>Making Impossible States Impossible</h2>
@@ -552,18 +587,22 @@ type Maybe a
                 <code class="elm" data-trim>
 type alias Model =
     { image : Maybe Int
-    , caption : String
+    , caption : Maybe String
     }
 
 
 initialModel : Model
 initialModel =
     { image = Nothing
-    , caption = "Caption, but no image!"
+    , caption = Just "Caption, but no image!"
     }
 
               </pre>
             </code>
+            <aside class="notes" data-markdown>
+              * How should my app behave here? My IFs will make sure no caption
+              appears.
+            </aside>
             </section>
 
 
@@ -572,7 +611,7 @@ initialModel =
                 <code class="elm" data-trim>
 type alias ImageAttributes =
     { imageId : Int
-    , caption : String
+    , caption : Maybe String
     }
 
 type ImageAndCaption
