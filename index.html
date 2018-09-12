@@ -70,7 +70,7 @@
         </section>
 
         <section>
-          <small><a href="https://ellie-app.com/3hY56wDzX5Sa1" target="_blank">https://ellie-app.com/QMTqsgYYPza1</a> </small>
+          <small><a href="https://ellie-app.com/3jSn78k6gb3a1" target="_blank">https://ellie-app.com/3jSn78k6gb3a1</a> </small>
 
 					<pre>
 						<code class="elm" data-trim>
@@ -84,7 +84,6 @@ import Html.Events exposing (onClick)
 
 type alias Model =
     { name : String
-    , kids : Int
     , counter : Int
     }
 
@@ -92,7 +91,6 @@ type alias Model =
 initialModel : Model
 initialModel =
     { name = "Amitai"
-    , kids = 3
     , counter = 0
     }
 
@@ -117,7 +115,6 @@ view model =
       div [ class "container" ]
         [ div [ class "row" ]
             [ div [] [ text <| "Name: " ++ model.name ]
-            , div [] [ text <| "Kids num: " ++ String.fromInt model.kids ]
             , button [ onClick DecrementCounter ] [ text "-" ]
             , button [ onClick IncrementCounter ] [ text "+" ]
             , pre [] [ text <| String.fromInt model.counter ]
@@ -315,7 +312,6 @@ main =
                   * Client disapointed. Mechanic example
                   * As developers we expect the client be ok over and over with the fact that breaks are not working.
                   * Devs/ Account manager moral
-                  * Bugs cause among other stuff also lack of confidence
               </aside>
             </section>
 
@@ -332,13 +328,15 @@ main =
               <aside class="notes" data-markdown>
                 * We wanted to build confidence, so we started with a silly time watch
                 * In you work in Israel, for insurance reasons, you need to register the hours you arrive and leave.
+                * The reason I mention it is that on twitter people implied I was an asshole for doing this.
+                * I mention it to you, I was a little insulted - as a lesson, to watch you what you say on Twitter.
+                * Seriously, having people think I need a time watch to be an asshole, after all it comes so natural to me.
               </aside>
             </section>
 
 
             <!-- Hedley -->
             <section>
-              <small>https://github.com/Gizra/elm-hedley</small>
                <div>
                  <img src="https://cloud.githubusercontent.com/assets/125707/11417413/ae2f2d96-941f-11e5-8482-d68a936ad083.jpg" />
                </div>
@@ -371,11 +369,19 @@ main =
             <!-- Backoffice -->
              <section>
                <img src="https://user-images.githubusercontent.com/125707/42811612-b86f4484-89c3-11e8-823f-d889619a77b9.jpg" alt="" class="stretch">
+
+               <aside class="notes" data-markdown>
+                 * Don't have to start from scratch
+               </aside>
              </section>
 
             <!-- HK -->
             <section>
               <img src="https://user-images.githubusercontent.com/125707/42819204-8ad6ff22-89db-11e8-8f16-7ff5d02b425f.jpg" alt="" class="stretch">
+
+              <aside class="notes" data-markdown>
+                * Hybrid solution, starting small
+              </aside>
             </section>
 
 
@@ -398,60 +404,6 @@ main =
                 * It's Elm embedded in Jekyll.
               </aside>
             </section>
-
-            <!-- ihangane -->
-            <section>
-              <img src="https://user-images.githubusercontent.com/125707/42811324-f1209446-89c2-11e8-8783-726edfef64fc.jpg" alt="" class="stretch">
-
-              <aside class="notes" data-markdown>
-                * EMR (Electronic Medical records) Application.
-                * Ihangane provides counseling to Rwandan mothers with HIV to prevent the transmission of the virus to their child
-                * Offline, storing things like images in the local device storage, until a bandwidth is available to upload to the backend.
-              </aside>
-            </section>
-
-            <!-- ihangane translate -->
-            <section>
-              <img src="https://user-images.githubusercontent.com/125707/43063072-8182e54e-8e63-11e8-8c41-729c705441ae.jpg" class="stretch">
-            </section>
-
-
-            <section>
-              <h2>Why is Elm good for your business?</h2>
-              <aside class="notes" data-markdown>
-                * I don't know your business
-                * The compiler reduces your cognitive load, so you are not afarid of constatnly adding new stuff
-                or polishing old ones
-                * It has a community of developers. Sure, much less than React, but it seems the ratio of experience, seniority
-                and very importantly -- availability very high.
-              </aside>
-            </section>
-
-            <!-- Elm cookie -->
-            <section>
-              <small>https://github.com/elm-lang/cookie</small>
-              <div class="">
-                <img src="https://user-images.githubusercontent.com/125707/26850413-0e7c2fde-4b10-11e7-8d0b-50359a41ca93.jpg" alt="">
-              </div>
-
-              <aside class="notes" data-markdown>
-                * But there are also the not obvious reasons and examples.
-                * Like the cookie integration that was written but never published. For one good reason "there is a better way"
-              </aside>
-            </section>
-
-            <!-- Focus library -->
-            <section>
-              <small>https://github.com/evancz/focus</small>
-              <div class="">
-                <img src="https://user-images.githubusercontent.com/125707/26850498-5c015dd8-4b10-11e7-922c-a837933a3984.jpg" alt="">
-              </div>
-
-              <aside class="notes" data-markdown>
-                * Like the Focus library, which is kinds lenses integration that was researched and written but never published. For one good reason "there is a better way"
-              </aside>
-            </section>
-
 
             <section>
               <h2>Is It Right for You?</h2>
@@ -493,14 +445,14 @@ initialModel =
               <pre>
                 <code class="elm" data-trim>
 type alias Model =
-    { image : Int
+    { imageId : Int
     , caption : String
     }
 
 
 initialModel : Model
 initialModel =
-    { image = 0
+    { imageId = 0
     , caption = ""
     }
 
@@ -517,14 +469,14 @@ initialModel =
               <pre>
                 <code class="elm" data-trim>
 type alias Model =
-    { image : Maybe Int
+    { imageId : Maybe Int
     , caption : Maybe String
     }
 
 
 initialModel : Model
 initialModel =
-    { image = Nothing
+    { imageId = Nothing
     , caption = Nothing
     }
 
@@ -646,6 +598,33 @@ initialModel =
         , "Second it still about Elm"
         ]
     , imageAndCaption = NoImage
+    }
+              </pre>
+            </code>
+            </section>
+
+            <section>
+              <pre>
+                <code class="elm" data-trim>
+type alias Model =
+    { title : String
+    , paragraphs : List String
+    , imageAndCaption : ImageAndCaption
+    }
+
+
+initialModel : Model
+initialModel =
+    { title = "Best Title Ever"
+    , paragraphs =
+        [ "First paragraph is about Elm "
+        , "Second it still about Elm"
+        ]
+    , imageAndCaption =
+        Image
+            { imageUrl = Just 100
+            , caption = Just "Image caption"
+            }
     }
               </pre>
             </code>
